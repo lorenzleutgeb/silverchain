@@ -1,8 +1,9 @@
-START = Stmt ;
+START = OptElse ;
 EVAL = "/* eval code */" ;
 
+OptElse -> Stmt ;
 Stmt -> IfElse | ExprStmt ;
 IfElse -> "if" "leftParen" Expr "rightParen" Block ( "else" Block ) ?;
-Block -> "leftBracket" Stmt* "rightBracket" ;
+Block -> "leftBrace" Stmt* "rightBrace" ;
 ExprStmt -> Expr "semicolon" ;
 Expr : "String" ;

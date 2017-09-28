@@ -1,0 +1,9 @@
+START = DangElse ;
+EVAL = "/* eval code */" ;
+
+DangElse -> IfStmt | ExprStmt ;
+Stmt -> IfStmt | Block | ExprStmt ;
+IfStmt -> "if" "rightParen" Expr "leftParen" Stmt ( "else" Stmt )? ;
+Block -> "leftBrace" (IfStmt | ExprStmt)* "rightBrace" ;
+ExprStmt -> Expr "semicolon" ;
+Expr : "String" ;
